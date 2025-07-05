@@ -2,7 +2,7 @@ import { onAuthenticateUser } from '@/actions/auth'
 import { getWebinarByPresenterId } from '@/actions/webinar'
 import PageHeader from '@/components/ui/ReusableComponents/PageHeader'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { HomeIcon, Webcam } from 'lucide-react'
+import { HomeIcon, Webcam, Handshake } from 'lucide-react'
 import { redirect } from 'next/navigation'
 import React from 'react'
 import WebinarCard from './_components/WebinarCard'
@@ -26,7 +26,7 @@ const page = async () => {
         <PageHeader
             leftIcon={<HomeIcon className='w-3 h-3'/>}
             mainIcon={<Webcam className='w-12 h-12'/>}
-            rightIcon={<HomeIcon className='w-3 h-3'/>}
+            rightIcon={<Handshake className='w-3 h-3'/>}
             heading="The home of webinars"
             placeholder="Search webinars..."
 
@@ -34,7 +34,7 @@ const page = async () => {
             <TabsList className='bg-transparent space-x-3'>
                 <TabsTrigger
                     value='all'
-                    className='bg-secondary opacity-50 data-[state-action]:opacity-100 px-8 py-4'
+                    className='bg-secondary opacity-50 data-[state=action]:opacity-100 px-8 py-4'
                 >
                     All
                 </TabsTrigger>
@@ -51,10 +51,11 @@ const page = async () => {
                     Ended
                 </TabsTrigger>
             </TabsList>
+        </PageHeader>
 
-            <TabsContent
+        <TabsContent
                 value='all'
-                className='w-full grid grid-cols-1 sm:grid-cols-3 xl:grid-cols-4 place-items-start place-content-start gap-x-6 gap-y-10'
+                className='w-full grid grid-cols-1 sm:grid-cols-3 xl:grid-cols-4 place-items-start place-content-start px-6 md:px-8 lg:px-10 xl:px-12 gap-y-10 gap-x-6'
             >
                 {
                     webinars?.length > 0 ? (
@@ -70,9 +71,7 @@ const page = async () => {
                         </div>
                     )
                 }
-            </TabsContent>
-            
-        </PageHeader>
+        </TabsContent>
     </Tabs>
   )
 }
