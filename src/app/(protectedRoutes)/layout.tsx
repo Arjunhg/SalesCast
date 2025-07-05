@@ -1,0 +1,42 @@
+import { onAuthenticateUser } from "@/actions/auth";
+import Header from "@/components/ui/ReusableComponents/LayoutComponents/Header";
+import Sidebar from "@/components/ui/ReusableComponents/LayoutComponents/Sidebar";
+import { redirect } from "next/navigation";
+
+type Props = {
+    children: React.ReactNode;
+}
+
+// How this works?
+// It only renders once. When the bundle is loaded, it will render the layout. It bundles in and cahces the layout.
+// Otherwise it can lead to authentication issues if the layout is not cached.
+
+// What we will do is authenticate user in this layout page, but because this layout page is not re-rendered when it's called again, even if the user signs-out it's still gonna hold same context/data(cache).
+// So we will have to put a check on every page that is protected, to check if the user is authenticated or not. (One drawback of this approach).
+
+// Other way to go around this is to create a provider (clerk) and inside that we can use client state like useUser which gives the state of the user.
+// Inside provide we can check state and based on that when the state update we can send the user back to the login page.
+
+
+const Layout = async ({ children }: Props) => {
+
+    const userExists = await onAuthenticateUser();
+
+    if(!userExists.user){
+        redirect('/sign-in');
+    }
+
+    return (
+        <div className="flex w-full min-h-screen">
+            {/* Sidebar */}
+            <Sidebar/>
+            <div className="flex flex-col w-full h-screen overflow-auto px-4 scrollbar-hide container mx-auto">
+                {/* Header */}
+                <Header user={userExists.user}/>
+                <div className="flex-1 py-10">{children}</div>
+            </div>
+        </div>
+    )
+}
+
+export default Layout;
