@@ -1,4 +1,4 @@
-import { Attendee } from "@prisma/client";
+import { Attendee, User, Webinar } from "@prisma/client";
 
 export type ValidationErrors = Record<string, string>;
 
@@ -86,4 +86,8 @@ export const validationAdditionalInfo = (data: {
         valid: Object.keys(errors).length === 0,
         errors
     }
+}
+
+export type WebinarWithPresenter = Webinar & {
+    presenter: User
 }

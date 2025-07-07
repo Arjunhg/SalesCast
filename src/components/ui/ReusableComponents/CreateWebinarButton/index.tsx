@@ -7,6 +7,7 @@ import { useState } from 'react';
 import BasicInfoForm from './BasicInfoForm';
 import CTAStep from './CTAStep';
 import AdditionalInfoStep from './AdditionalInfoStep';
+import SuccessStep from './SuccessStep';
 
 type Props = {
     
@@ -14,7 +15,7 @@ type Props = {
 
 const CreateWebinarButton = (props: Props) => {
 
-  const { isModelOpen, setModelOpen, isComplete, setComplete } = useWebinarStore();
+  const { isModelOpen, setModelOpen, isComplete, setComplete, resetForm } = useWebinarStore();
   // alert(isModelOpen);
 
   const [webinarLink, setWebinarLink] = useState('');
@@ -45,6 +46,10 @@ const CreateWebinarButton = (props: Props) => {
     },
   ]
 
+  const handleCreateNew = () => {
+    resetForm();
+  }
+
   const handleComplete = (webinarId: string) => {
     setComplete(true);
     setWebinarLink(
@@ -69,7 +74,10 @@ const CreateWebinarButton = (props: Props) => {
         isComplete ? (
           <div className='bg-muted text-primary rounded-lg overflow-hidden'>
             <DialogTitle className='sr-only'>Webinar Created</DialogTitle>
-            {/* Success */}
+              <SuccessStep
+                webinarLink={webinarLink}
+                onCreateNew={handleCreateNew}
+              />
           </div>
         ) : (
           <>
