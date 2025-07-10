@@ -21,6 +21,7 @@ const getWebinarAttendance = async (
                 id: true,
                 ctaType: true,
                 tags: true,
+                presenter: true,
                 _count: {
                     select: {
                         attendances: true
@@ -100,6 +101,7 @@ const getWebinarAttendance = async (
                         id: attendance.user.id,
                         name: attendance.user.name,
                         email: attendance.user.email,
+                        attendedAt: attendance.joinedAt,
                         createdAt: attendance.user.createdAt,
                         updatedAt: attendance.user.updatedAt,
                         callStatus: attendance.user.callStatus,
@@ -113,6 +115,7 @@ const getWebinarAttendance = async (
             data: result,
             ctaType: webinar.ctaType,
             webinarTags: webinar.tags || [],
+            presenter: webinar.presenter,
         }
     } catch (error) {
         console.error('Error fetching webinar attendance:', error);
@@ -217,5 +220,40 @@ const registerAttendee = async (
         };
     }
 };
+
+export const changeAttendanceType = async (
+    attendeeId: string,
+    webinarId: string,
+    attendedType: AttendedTypeEnum
+  ) => {
+    try {
+      const attendance = await prismaClient.attendance.update({
+        where: {
+          attendeeId_webinarId: {
+            attendeeId,
+            webinarId,
+          },
+        },
+        data: {
+          attendedType,
+        },
+      })
+  
+      return {
+        success: true,
+        status: 200,
+        message: 'Attendance type updated successfully',
+        data: attendance,
+      }
+    } catch (error) {
+      console.error('Error updating attendance type:', error)
+      return {
+        success: false,
+        status: 500,
+        message: 'Failed to update attendance type',
+        error,
+      }
+    }
+}
 
 export { getWebinarAttendance, registerAttendee };

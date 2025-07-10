@@ -116,26 +116,43 @@ export const createWebinar = async (formData: WebinarFormState) => {
     }
 }
 
-export const getWebinarByPresenterId = async (presenterId: string) => {
+export const getWebinarByPresenterId = async (
+    presenterId: string,
+    webinarStatus?: string
+  ) => {
     try {
-        const webinars  = await prismaClient.webinar.findMany({
-            where: {presenterId},
-            include: {
-                presenter: {
-                    select: {
-                        name: true,
-                        stripeConnectId: true,
-                        id: true
-                    }
-                }
-            }
-        })
-        return webinars;
+      let statusFilter: WebinarStatusEnum | undefined
+  
+      switch (webinarStatus) {
+        case 'upcoming':
+          statusFilter = WebinarStatusEnum.SCHEDULED
+          break
+        case 'ended':
+          statusFilter = WebinarStatusEnum.ENDED
+          break
+        default:
+          statusFilter = undefined
+      }
+  
+      const webinars = await prismaClient.webinar.findMany({
+        where: { presenterId, webinarStatus: statusFilter },
+        include: {
+          presenter: {
+            select: {
+              name: true,
+              stripeConnectId: true,
+              id: true,
+            },
+          },
+        },
+      })
+      return webinars
     } catch (error) {
-        console.error('Error getting webinars:', error);
-        return [];
+      console.error('Error getting webinars:', error)
+      return []
     }
 }
+  
 
 export const getWebinarById = async (webinarId: string) => {
     try {
