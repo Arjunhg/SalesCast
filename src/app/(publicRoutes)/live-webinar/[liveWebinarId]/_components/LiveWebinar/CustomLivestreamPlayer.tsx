@@ -1,9 +1,11 @@
-'use client'
-
-import { useStreamVideoClient, Call, StreamCall } from '@stream-io/video-react-sdk'
-import { WebinarWithPresenter } from '@/lib/types'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
+import {
+  Call,
+  StreamCall,
+  useStreamVideoClient,
+} from '@stream-io/video-react-sdk'
 import LiveWebinarView from '../Common/LiveWebinarView'
+import { WebinarWithPresenter } from '@/lib/types'
 
 type Props = {
   username: string
@@ -14,10 +16,10 @@ type Props = {
 }
 
 const CustomLivestreamPlayer = ({
-  username,
   callId,
-  callType,
   webinar,
+  callType,
+  username,
   token,
 }: Props) => {
   const client = useStreamVideoClient()
@@ -26,34 +28,32 @@ const CustomLivestreamPlayer = ({
 
   useEffect(() => {
     if (!client) return
-
     const myCall = client.call(callType, callId)
     setCall(myCall)
-
-    myCall.join().catch((e) => {
-      console.error('Failed to join call', e)
-    })
-
+    myCall.join({ create: true }).then(
+      () => setCall(myCall),
+      () => console.error('Failed to join the call')
+    )
     return () => {
-      myCall.leave().catch((e) => {
-        console.error('Failed to leave call', e)
-      })
+      // myCall.leave().catch((e) => {
+      //   console.error('Failed to leave call', e)
+      // })
       setCall(undefined)
     }
   }, [client, callId, callType])
 
   if (!call) return null
-
   return (
     <StreamCall call={call}>
       <LiveWebinarView
         showChat={showChat}
         setShowChat={setShowChat}
+        webinar={webinar}
         isHost={true}
         username={username}
-        userId={process.env.NEXT_PUBLIC_STREAM_USER_ID!}
+        userId={webinar.presenter.id}
         userToken={token}
-        webinar={webinar}
+        call={call}
       />
     </StreamCall>
   )

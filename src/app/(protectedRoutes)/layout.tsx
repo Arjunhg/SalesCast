@@ -27,13 +27,17 @@ const Layout = async ({ children }: Props) => {
     }
 
     return (
-        <div className="flex w-full min-h-screen">
+        <div className="flex w-full min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
             {/* Sidebar */}
             <Sidebar/>
-            <div className="flex flex-col w-full h-screen overflow-auto px-4 scrollbar-hide container mx-auto">
+            <div className="flex flex-col w-full h-screen overflow-auto px-6 scrollbar-hide container mx-auto">
                 {/* Header */}
                 <Header user={userExists.user}/>
-                <div className="flex-1 py-10">{children}</div>
+                <div className="flex-1 py-8">
+                    <div className="max-w-7xl mx-auto">
+                        {children}
+                    </div>
+                </div>
             </div>
         </div>
     )

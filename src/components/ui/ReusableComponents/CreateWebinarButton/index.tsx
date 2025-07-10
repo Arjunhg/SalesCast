@@ -1,7 +1,7 @@
 'use client';
 import { Dialog, DialogContent, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
 import { useWebinarStore } from '@/store/useWebinarStore';
-import { PlusIcon } from 'lucide-react';
+import { PlusIcon, Sparkles } from 'lucide-react';
 import MultipStepForm from './MultipStepForm';
 import { useState } from 'react';
 import BasicInfoForm from './BasicInfoForm';
@@ -62,17 +62,19 @@ const CreateWebinarButton = (props: Props) => {
     <Dialog open={isModelOpen} onOpenChange={setModelOpen}>
       <DialogTrigger asChild>
         <button
-          className="rounded-xl flex gap-2 items-center hover:cursor-pointer px-4 py-2 border border-border bg-primary/10 backdrop-blur-sm text-sm font-normal text-primary hover:bg-primary-20"
+          className="group rounded-2xl flex gap-3 items-center hover:cursor-pointer px-6 py-3 border border-white/20 bg-gradient-to-r from-purple-500/20 to-blue-500/20 backdrop-blur-sm text-sm font-semibold text-gray-900 dark:text-white hover:scale-105 transition-all duration-300 hover:shadow-lg"
           onClick={() => setModelOpen(true)}
         >
-          <PlusIcon />
+          <div className="p-1 rounded-lg bg-purple-500/20 group-hover:bg-purple-500/30 transition-colors duration-300">
+            <PlusIcon className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+          </div>
           Create Webinar
       </button>
     </DialogTrigger>
     <DialogContent className='sm:max-w-[900px] p-0 bg-transparent border-none'>
       {
         isComplete ? (
-          <div className='bg-muted text-primary rounded-lg overflow-hidden'>
+          <div className='bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl overflow-hidden shadow-2xl'>
             <DialogTitle className='sr-only'>Webinar Created</DialogTitle>
               <SuccessStep
                 webinarLink={webinarLink}

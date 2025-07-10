@@ -17,17 +17,17 @@ const Sidebar = (props: Props) => {
 
     return (
         <div
-            className="w-18 sm:w-28 h-screen sticky top-0 py-10 px-2 sm:px-6 border bg-background border-border flex flex-col items-center justify-start gap-10"
+            className="w-20 sm:w-24 h-screen sticky top-0 py-8 px-3 sm:px-4 border-r border-white/20 bg-white/10 backdrop-blur-xl flex flex-col items-center justify-start gap-8"
         >
 
-            <div className="cursor-pointer w-fit h-fit flex items-center justify-center rounded-full bg-white/10 p-2">
-                <Triangle/>
+            <div className="cursor-pointer w-fit h-fit flex items-center justify-center rounded-2xl bg-gradient-to-br from-purple-500/20 to-blue-500/20 p-3 border border-white/20 hover:scale-105 transition-all duration-300 hover:shadow-lg">
+                <Triangle className="w-6 h-6 text-purple-600 dark:text-purple-400"/>
             </div>
 
             <div className="w-full h-full justify-between items-center flex flex-col">
 
                 <div
-                    className="w-full h-fit  flex flex-col items-center justify-start gap-4"
+                    className="w-full h-fit flex flex-col items-center justify-start gap-3"
                 >
                     {
                     sidebarData.map((item) => (
@@ -36,15 +36,23 @@ const Sidebar = (props: Props) => {
                                     <TooltipTrigger asChild>
                                         <Link 
                                             href={item.link}
-                                            className={`flex hover:bg-white/10 items-center gap-2 cursor-pointer rounded-lg p-2 ${pathname.includes(item.link) ? 'iconBackground' : ''}`}
+                                            className={`flex hover:bg-white/20 items-center gap-3 cursor-pointer rounded-2xl p-3 transition-all duration-300 hover:scale-105 hover:shadow-lg ${
+                                                pathname.includes(item.link) 
+                                                    ? 'bg-gradient-to-r from-purple-500/30 to-blue-500/30 border border-white/30 shadow-lg' 
+                                                    : 'hover:border-white/20 border border-transparent'
+                                            }`}
                                         >
                                             <item.icon
-                                                className={`w-6 h-6  ${pathname.includes(item.link) ? '' : 'opacity-80'}`}
+                                                className={`w-5 h-5 transition-all duration-300 ${
+                                                    pathname.includes(item.link) 
+                                                        ? 'text-purple-600 dark:text-purple-400' 
+                                                        : 'text-gray-600 dark:text-gray-400 opacity-80'
+                                                }`}
                                             />
                                         </Link>
                                     </TooltipTrigger>
-                                    <TooltipContent side='right'>
-                                        <span className="text-sm">{item.title}</span>
+                                    <TooltipContent side='right' className="bg-white/90 backdrop-blur-sm border border-white/20">
+                                        <span className="text-sm font-medium text-gray-800">{item.title}</span>
                                     </TooltipContent>
                                 </Tooltip>
                             </TooltipProvider>
@@ -52,7 +60,13 @@ const Sidebar = (props: Props) => {
                     }
                 </div>
 
-                <UserButton/>
+                <div className="p-2 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20">
+                    <UserButton appearance={{
+                        elements: {
+                            avatarBox: "w-10 h-10 rounded-xl"
+                        }
+                    }}/>
+                </div>
             </div>
         </div>
     )
