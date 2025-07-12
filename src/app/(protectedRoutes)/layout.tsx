@@ -1,4 +1,5 @@
 import { onAuthenticateUser } from "@/actions/auth";
+import { getAllAssistants } from "@/actions/vapi";
 import Header from "@/components/ui/ReusableComponents/LayoutComponents/Header";
 import Sidebar from "@/components/ui/ReusableComponents/LayoutComponents/Sidebar";
 import { redirect } from "next/navigation";
@@ -26,13 +27,15 @@ const Layout = async ({ children }: Props) => {
         redirect('/sign-in');
     }
 
+    const assistants = await getAllAssistants();
+
     return (
         <div className="flex w-full min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
             {/* Sidebar */}
             <Sidebar/>
             <div className="flex flex-col w-full h-screen overflow-auto px-6 scrollbar-hide container mx-auto">
                 {/* Header */}
-                <Header user={userExists.user}/>
+                <Header user={userExists.user} assistants={assistants.data || []}/>
                 <div className="flex-1 py-8">
                     <div className="max-w-7xl mx-auto">
                         {children}

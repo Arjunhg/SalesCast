@@ -7,13 +7,15 @@ import { User } from "@prisma/client"
 import { ArrowLeft, Zap, Sparkles } from "lucide-react";
 import PurpleIcon from "@/components/ui/ReusableComponents/PurpleIcon";
 import CreateWebinarButton from "../CreateWebinarButton";
+import { Assistant } from "@vapi-ai/server-sdk/api";
 
 type Props = {
     user: User
+    assistants: Assistant[] | []
 }
 
 // TODO: Stripe integration, Assistant
-const Header = ( {user}: Props ) => {
+const Header = ( {user, assistants}: Props ) => {
     const pathname = usePathname();
     const router = useRouter();
 
@@ -45,7 +47,7 @@ const Header = ( {user}: Props ) => {
                     </PurpleIcon>
                 </div>
 
-                <CreateWebinarButton/>
+                <CreateWebinarButton assistants={assistants}/>
             </div>
         </div>
     )

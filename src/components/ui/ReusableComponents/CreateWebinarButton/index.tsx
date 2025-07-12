@@ -8,12 +8,13 @@ import BasicInfoForm from './BasicInfoForm';
 import CTAStep from './CTAStep';
 import AdditionalInfoStep from './AdditionalInfoStep';
 import SuccessStep from './SuccessStep';
+import { Assistant } from '@vapi-ai/server-sdk/api';
 
 type Props = {
-    
+  assistants: Assistant[] | []
 }
 
-const CreateWebinarButton = (props: Props) => {
+const CreateWebinarButton = ({assistants}: Props) => {
 
   const { isModelOpen, setModelOpen, isComplete, setComplete, resetForm } = useWebinarStore();
   // alert(isModelOpen);
@@ -33,8 +34,7 @@ const CreateWebinarButton = (props: Props) => {
       description: 'Please provide the end-point for your customers through your webinar',
       component: (
         <CTAStep
-          assistants={[]}
-          stripeProducts={[]}
+          assistants={assistants}
         />
       ),
     },
