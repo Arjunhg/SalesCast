@@ -115,13 +115,6 @@ const WebinarUpcomingState = ({ webinar, currentUser }: Props) => {
         </h3>
         <p className="text-muted-foreground text-xs">{webinar.description}</p>
         
-        {/* Debug information */}
-        <div className="text-xs text-gray-500 space-y-1">
-          <p>Raw startTime: {webinar.startTime.toString()}</p>
-          <p>ISO String: {new Date(webinar.startTime).toISOString()}</p>
-          <p>Local String: {new Date(webinar.startTime).toString()}</p>
-        </div>
-        
         <div className="w-full justify-center flex gap-2 flex-wrap items-center">
           <Button
             variant={'outline'}
@@ -135,6 +128,15 @@ const WebinarUpcomingState = ({ webinar, currentUser }: Props) => {
             <Clock className="mr-2" />
             {format(new Date(webinar.startTime), 'hh:mm a')}
           </Button>
+        </div>
+        
+        {/* Timezone information */}
+        <div className="text-xs text-gray-500 space-y-1 mt-2">
+          <div className="flex items-center gap-2 justify-center">
+            <span>🌍 UTC: {format(new Date(webinar.startTime), 'HH:mm')} UTC</span>
+            <span>•</span>
+            <span>🇮🇳 IST: {format(new Date(webinar.startTime.getTime() + (5.5 * 60 * 60 * 1000)), 'HH:mm')} IST</span>
+          </div>
         </div>
       </div>
     </div>

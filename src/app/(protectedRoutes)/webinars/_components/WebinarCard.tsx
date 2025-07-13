@@ -3,7 +3,7 @@ import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { format } from 'date-fns'
-import { Calendar, GitFork, Play, Eye } from 'lucide-react'
+import { Calendar, GitFork, Play, Eye, Clock } from 'lucide-react'
 
 type Props = {
   webinar: Webinar
@@ -44,6 +44,10 @@ const WebinarCard = ({ webinar }: Props) => {
             <div className="flex gap-2 items-center text-xs text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-full">
               <Calendar size={14} />
               <p>{format(new Date(webinar?.startTime), 'dd/MM/yyyy')}</p>
+            </div>
+            <div className="flex gap-2 items-center text-xs text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-full">
+              <Clock size={14} />
+              <p>{format(new Date(webinar?.startTime), 'HH:mm')} UTC</p>
             </div>
             <div className="flex gap-2 items-center text-xs text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-full">
               <Eye size={14} />

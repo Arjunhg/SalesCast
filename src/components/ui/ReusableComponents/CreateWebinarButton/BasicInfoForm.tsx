@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button'
 import { Calendar } from '@/components/ui/calendar'
 import { Select, SelectTrigger, SelectContent, SelectItem, SelectValue } from '@/components/ui/select'
 import React from 'react'
-import { cn } from '@/lib/utils'
+import { cn, convertToUTC, convertToIST } from '@/lib/utils'
 import { CalendarIcon, Clock, Upload } from 'lucide-react'
 import { format } from 'date-fns'
 import { toast } from 'sonner'
@@ -54,6 +54,21 @@ const BasicInfoForm = () => {
 
   return (
         <div className="space-y-6">
+            {/* Timezone notice */}
+            <div className="bg-blue-50 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-800 rounded-lg p-3">
+                <div className="flex items-start gap-2">
+                    <div className="text-blue-600 dark:text-blue-400 mt-0.5">ℹ️</div>
+                    <div className="text-sm text-blue-800 dark:text-blue-200">
+                        <div className="font-medium mb-1">Timezone Information</div>
+                        <div className="space-y-1">
+                            <p>• All webinar times are stored in UTC (Coordinated Universal Time)</p>
+                            <p>• When you select a time, it will be converted to UTC for storage</p>
+                            <p>• The system will show you both UTC and your local time (IST) for reference</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
             <div className="space-y-2">
             <Label
                 htmlFor="webinarName"
@@ -175,6 +190,31 @@ const BasicInfoForm = () => {
                             </SelectContent>
                         </Select>
                     </div>
+                    
+                    {/* Timezone indicator */}
+                    <div className="flex items-center gap-2 text-xs text-gray-500 mt-2">
+                        <div className="flex items-center gap-1">
+                            <span>🌍</span>
+                            <span>Times are stored in UTC</span>
+                        </div>
+                        <span>•</span>
+                        <div className="flex items-center gap-1">
+                            <span>🇮🇳</span>
+                            <span>Your timezone: {Intl.DateTimeFormat().resolvedOptions().timeZone}</span>
+                        </div>
+                    </div>
+                    
+                    {/* Local time reference */}
+                    {formData.basicInfo.time && formData.basicInfo.date && (
+                        <div className="text-xs text-blue-600 bg-blue-50 dark:bg-blue-950/20 dark:text-blue-400 p-2 rounded-md">
+                            <div className="font-medium mb-1">Local Time Reference:</div>
+                            <div className="space-y-1">
+                                <div>UTC: {convertToUTC(formData.basicInfo.time, formData.basicInfo.timeFormat || 'AM')}</div>
+                                <div>IST: {convertToIST(formData.basicInfo.time, formData.basicInfo.timeFormat || 'AM')}</div>
+                            </div>
+                        </div>
+                    )}
+                    
                     {errors.time && <p className='text-sm text-red-400'>{errors.time}</p>}
                 </div>
         </div>
