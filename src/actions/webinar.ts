@@ -74,11 +74,8 @@ export const createWebinar = async (formData: WebinarFormState) => {
             formData.basicInfo.timeFormat || 'AM'
         )
 
-        // Get current time in the same timezone as the selected date
+        // Get current time
         const now = new Date();
-        
-        // Add a small buffer (1 minute) to allow for immediate scheduling
-        const bufferTime = new Date(now.getTime() + 60 * 1000); // Add 1 minute buffer
 
         // Debug logging
         console.log('Webinar creation debug:', {
@@ -88,15 +85,14 @@ export const createWebinar = async (formData: WebinarFormState) => {
             combinedDateTime: combineDateTime.toISOString(),
             combinedDateTimeLocal: combineDateTime.toString(),
             currentTime: now.toISOString(),
-            bufferTime: bufferTime.toISOString(),
-            isInFuture: combineDateTime >= bufferTime,
+            isInFuture: combineDateTime > now,
             serverTimezone: Intl.DateTimeFormat().resolvedOptions().timeZone
         });
 
-        if(combineDateTime < bufferTime){
+        if(combineDateTime <= now){
             return {
                 status: 400,
-                message: 'Webinar date and time must be at least 1 minute in the future.'
+                message: 'Webinar date and time must be in the future.'
             }
         }
 
