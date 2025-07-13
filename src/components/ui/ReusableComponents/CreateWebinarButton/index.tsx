@@ -1,7 +1,7 @@
 'use client';
 import { Dialog, DialogContent, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
 import { useWebinarStore } from '@/store/useWebinarStore';
-import { PlusIcon, Sparkles } from 'lucide-react';
+import { PlusIcon } from 'lucide-react';
 import MultipStepForm from './MultipStepForm';
 import { useState } from 'react';
 import BasicInfoForm from './BasicInfoForm';
@@ -66,7 +66,7 @@ const CreateWebinarButton = ({assistants}: Props) => {
           onClick={() => setModelOpen(true)}
         >
           <div className="p-1 rounded-lg bg-purple-500/20 group-hover:bg-purple-500/30 transition-colors duration-300">
-            <PlusIcon className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+            <PlusIcon className="w-4 h-4 dark:text-red-400 animate-[ping_1.5s_ease-in-out_infinite]" />
           </div>
           Create Webinar
       </button>

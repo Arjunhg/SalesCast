@@ -11,15 +11,26 @@ export const getAllAssistants = async () => {
       status: 200,
       data: getAllAgents,
     }
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error fetching agents:', error)
+    
+    // Handle specific VAPI errors
+    if (error.statusCode === 401) {
+      return {
+        success: false,
+        status: 401,
+        message: 'Authentication failed. Please check your VAPI credentials.',
+      }
+    }
+    
     return {
       success: false,
       status: 500,
-      message: 'Failed to fetch agents',
+      message: 'Failed to fetch agents. Please try again.',
     }
   }
 }
+
 export const createAssistant = async (name: string) => {
   try {
     const createAssistant = await vapiServer.assistants.create({
@@ -48,12 +59,30 @@ export const createAssistant = async (name: string) => {
       status: 200,
       data: createAssistant,
     }
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error creating assistant:', error)
+    
+    // Handle specific VAPI errors
+    if (error.statusCode === 401) {
+      return {
+        success: false,
+        status: 401,
+        message: 'Authentication failed. Please check your VAPI credentials.',
+      }
+    }
+    
+    if (error.statusCode === 400) {
+      return {
+        success: false,
+        status: 400,
+        message: 'Invalid request. Please check your assistant configuration.',
+      }
+    }
+    
     return {
       success: false,
       status: 500,
-      message: 'Failed to create assistant',
+      message: 'Failed to create assistant. Please try again.',
     }
   }
 }
@@ -85,12 +114,30 @@ export const updateAssistant = async (
       status: 200,
       data: updateAssistant,
     }
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error updating assistant:', error)
+    
+    // Handle specific VAPI errors
+    if (error.statusCode === 401) {
+      return {
+        success: false,
+        status: 401,
+        message: 'Authentication failed. Please check your VAPI credentials.',
+      }
+    }
+    
+    if (error.statusCode === 404) {
+      return {
+        success: false,
+        status: 404,
+        message: 'Assistant not found.',
+      }
+    }
+    
     return {
       success: false,
       status: 500,
-      message: 'Failed to update assistant',
+      message: 'Failed to update assistant. Please try again.',
       error: error,
     }
   }

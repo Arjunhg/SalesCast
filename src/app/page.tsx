@@ -74,9 +74,9 @@ export default function Home() {
         </div>
 
         {/* Waitlist */}
-        <div className="pt-12">
+        {/* <div className="pt-12">
           <Waitlist />
-        </div>
+        </div> */}
       </main>
 
       {/* Features Preview */}

@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 // import { User } from "@prisma/client";
 import { User } from "@prisma/client"
 import { ArrowLeft, Zap, Sparkles } from "lucide-react";
-import PurpleIcon from "@/components/ui/ReusableComponents/PurpleIcon";
 import CreateWebinarButton from "../CreateWebinarButton";
 import { Assistant } from "@vapi-ai/server-sdk/api";
 
@@ -14,13 +13,12 @@ type Props = {
     assistants: Assistant[] | []
 }
 
-// TODO: Stripe integration, Assistant
 const Header = ( {user, assistants}: Props ) => {
     const pathname = usePathname();
     const router = useRouter();
 
     return(
-        <div className="w-full px-6 pt-8 sticky top-0 z-10 bg-white/5 backdrop-blur-xl border-b border-white/10 gap-6 flex flex-wrap items-center justify-between">
+        <div className="w-full px-6 pt-8 sticky top-0 z-10 bg-white/5 backdrop-blur-xl border-b border-white/10 gap-6 flex flex-wrap items-center justify-between p-1">
             {
                 pathname.includes('pipeline') ? (
                     <Button
@@ -38,15 +36,7 @@ const Header = ( {user, assistants}: Props ) => {
                 )
             }
 
-            {/* TODO: Stripe integration and create webinar button */}
-
             <div className="flex gap-4 items-center flex-wrap">
-                <div className="p-3 rounded-2xl bg-gradient-to-br from-purple-500/20 to-blue-500/20 border border-white/20 hover:scale-105 transition-all duration-300 hover:shadow-lg backdrop-blur-sm">
-                    <PurpleIcon>
-                        <Zap className="w-5 h-5"/>
-                    </PurpleIcon>
-                </div>
-
                 <CreateWebinarButton assistants={assistants}/>
             </div>
         </div>

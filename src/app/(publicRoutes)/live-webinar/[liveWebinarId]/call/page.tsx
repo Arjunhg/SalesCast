@@ -42,8 +42,7 @@ const page = async ({ params, searchParams }: Props) => {
   
   if (
     webinar.ctaType !== 'BOOK_A_CALL' ||
-    !webinar.aiAgentId ||
-    !webinar.priceId
+    !webinar.aiAgentId
   ) {
     redirect(`/live-webinar/${liveWebinarId}?error=cannot-book-a-call`)
   }
@@ -51,8 +50,7 @@ const page = async ({ params, searchParams }: Props) => {
   console.log(
     '______________________________________',
     webinar.ctaType,
-    webinar.aiAgentId,
-    webinar.priceId
+    webinar.aiAgentId
   )
 
   if (attendee.data.callStatus === CallStatusEnum.COMPLETED) {

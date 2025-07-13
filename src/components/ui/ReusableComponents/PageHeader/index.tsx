@@ -9,6 +9,7 @@ type Props = {
     rightIcon: React.ReactNode
     children?: React.ReactNode
     placeholder?: string
+    
 }
 
 const PageHeader = ({ heading, mainIcon, leftIcon, rightIcon, children, placeholder}: Props) => {
@@ -32,7 +33,7 @@ const PageHeader = ({ heading, mainIcon, leftIcon, rightIcon, children, placehol
                 </div>
             </div>
 
-            <div className="w-full flex flex-wrap gap-6 items-center justify-between">
+            {/* <div className="w-full flex flex-wrap gap-6 items-center justify-between">
                 <div className="w-full md:max-w-3/4 relative flex-1">
                     <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-500"/>
                     <Input
@@ -44,7 +45,7 @@ const PageHeader = ({ heading, mainIcon, leftIcon, rightIcon, children, placehol
                 <div className="md:max-w-1/2 w-full overflow-x-auto">
                     {children}
                 </div>
-            </div>
+            </div> */}
         </div>
     )
 }

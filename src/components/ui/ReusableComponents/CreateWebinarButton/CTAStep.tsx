@@ -23,7 +23,7 @@ const CTAStep = ({ assistants }: Props) => {
     getStepValidationErrors,
   } = useWebinarStore()
   const [tagInput, setTagInput] = useState('')
-  const { ctaLabel, tags, aiAgent, priceId, ctaType } = formData.cta
+  const { ctaLabel, tags, aiAgent, ctaType } = formData.cta
   const errors = getStepValidationErrors('cta')
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

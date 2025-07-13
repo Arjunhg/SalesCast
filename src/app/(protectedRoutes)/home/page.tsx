@@ -1,4 +1,4 @@
-import { Upload, Webcam, TrendingUp, Users, Sparkles, ArrowRight } from "lucide-react";
+import { Upload, Webcam, TrendingUp, Users, Sparkles } from "lucide-react";
 import OnBoarding from "./_components/OnBoarding";
 import FeatureCard from "./_components/FeatureCard";
 import FeatureSectionLayout from "./_components/FeatureSectionLayout";
@@ -29,7 +29,7 @@ const HomePage = (props: Props) => {
                     <OnBoarding/>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 place-content-center w-full lg:w-auto">
+                <div className="grid grid-cols-1 gap-6 place-content-center w-full lg:w-auto">
                     <FeatureCard
                         Icon={<Upload className="w-12 h-12 text-purple-600 dark:text-purple-400"/>}
                         heading="Upload pre-recorded webinars"
@@ -53,7 +53,7 @@ const HomePage = (props: Props) => {
                             <TrendingUp className="w-6 h-6 text-purple-600 dark:text-purple-400"/>
                         </div>
                         <div>
-                            <p className="text-2xl font-bold text-gray-900 dark:text-white">2.4K</p>
+                            {/* <p className="text-2xl font-bold text-gray-900 dark:text-white">2.4K</p> */}
                             <p className="text-sm text-gray-600 dark:text-gray-400">Total Conversions</p>
                         </div>
                     </div>
@@ -64,7 +64,7 @@ const HomePage = (props: Props) => {
                             <Users className="w-6 h-6 text-blue-600 dark:text-blue-400"/>
                         </div>
                         <div>
-                            <p className="text-2xl font-bold text-gray-900 dark:text-white">15.2K</p>
+                            {/* <p className="text-2xl font-bold text-gray-900 dark:text-white">15.2K</p> */}
                             <p className="text-sm text-gray-600 dark:text-gray-400">Active Users</p>
                         </div>
                     </div>
@@ -75,7 +75,7 @@ const HomePage = (props: Props) => {
                             <Sparkles className="w-6 h-6 text-green-600 dark:text-green-400"/>
                         </div>
                         <div>
-                            <p className="text-2xl font-bold text-gray-900 dark:text-white">98%</p>
+                            {/* <p className="text-2xl font-bold text-gray-900 dark:text-white">98%</p> */}
                             <p className="text-sm text-gray-600 dark:text-gray-400">Success Rate</p>
                         </div>
                     </div>

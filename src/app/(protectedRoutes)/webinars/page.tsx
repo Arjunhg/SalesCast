@@ -36,21 +36,7 @@ const Page = async ({ searchParams }: Props) => {
         mainIcon={<Webcam className="w-12 h-12 text-purple-600 dark:text-purple-400" />}
         rightIcon={<LeadIcon className="w-4 h-4" />}
         heading="The home to all your webinars"
-        placeholder="Search webinars..."
       >
-        <div className="flex items-center gap-4">
-          <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
-            <input
-              type="text"
-              placeholder="Search webinars..."
-              className="pl-10 pr-4 py-2 rounded-2xl border border-white/20 bg-white/10 backdrop-blur-sm text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500/50"
-            />
-          </div>
-          <button className="p-2 rounded-2xl border border-white/20 bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-all duration-300">
-            <Filter className="w-5 h-5 text-gray-600 dark:text-gray-400" />
-          </button>
-        </div>
       </PageHeader>
 
       <Tabs

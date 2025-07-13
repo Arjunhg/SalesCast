@@ -15,10 +15,10 @@ const WebinarCard = ({ webinar }: Props) => {
       <Link href={`/live-webinar/${webinar?.id}`} className="w-full max-w-[400px] relative overflow-hidden rounded-3xl">
         <div className="relative">
           <Image
-            src="/darkthumbnail.png"
+            src="/Textcast.png"
             alt="webinar"
             width={400}
-            height={200}
+            height={300}
             className="w-full h-[200px] object-cover rounded-3xl group-hover:scale-105 transition-all duration-300 shadow-lg"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-3xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">

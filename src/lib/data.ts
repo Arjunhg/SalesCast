@@ -26,13 +26,6 @@ export const sidebarData = [
     icon: Sparkle,
     link: '/ai-agents',
   },
-
-  {
-    id: 5,
-    title: 'Settings',
-    icon: SettingsIcon,
-    link: '/settings',
-  },
 ]
 
 export const onBoardingSteps = [

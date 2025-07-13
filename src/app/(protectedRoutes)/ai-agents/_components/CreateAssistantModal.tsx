@@ -32,14 +32,16 @@ const CreateAssistantModal = ({ open, onOpenChange }: CreateAssistantModalProps)
     try {
       const res = await createAssistant(name)
       if (!res.success) {
-        throw new Error(res.message)
+        throw new Error(res.message || 'Failed to create assistant')
       }
       router.refresh()
       setName('')
       onOpenChange(false)
       toast.success('Assistant created successfully')
-    } catch (error) {
-      toast.error('Failed to create assistant')
+    } catch (error: any) {
+      console.error('Error creating assistant:', error)
+      const errorMessage = error.message || 'Failed to create assistant'
+      toast.error(errorMessage)
     } finally {
       setLoading(false)
     }
