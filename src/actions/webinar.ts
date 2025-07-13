@@ -7,7 +7,7 @@ import { revalidatePath } from "next/cache";
 import { WebinarStatusEnum } from "@prisma/client";
 
 function combinedDateTime(
-    date: Date,
+    dateStr: string,
     timeStr: string,
     timeFormat: 'AM' | 'PM'
 ): Date {
@@ -22,9 +22,11 @@ function combinedDateTime(
         hours = 0;
     }
 
-    const result = new Date(date);
-    result.setHours(hours, minutes, 0, 0);
-    return result;
+    // Create the date string with the specified time
+    // This will be interpreted as the user's local time
+    const dateTimeStr = `${dateStr}T${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:00`;
+    
+    return new Date(dateTimeStr);
 }
 
 export const createWebinar = async (formData: WebinarFormState) => {
@@ -67,7 +69,7 @@ export const createWebinar = async (formData: WebinarFormState) => {
         }
 
         const combineDateTime = combinedDateTime(
-            new Date(formData.basicInfo.date + 'T00:00:00'),
+            formData.basicInfo.date,
             formData.basicInfo.time,
             formData.basicInfo.timeFormat || 'AM'
         )
@@ -84,9 +86,11 @@ export const createWebinar = async (formData: WebinarFormState) => {
             selectedTime: formData.basicInfo.time,
             timeFormat: formData.basicInfo.timeFormat,
             combinedDateTime: combineDateTime.toISOString(),
+            combinedDateTimeLocal: combineDateTime.toString(),
             currentTime: now.toISOString(),
             bufferTime: bufferTime.toISOString(),
-            isInFuture: combineDateTime >= bufferTime
+            isInFuture: combineDateTime >= bufferTime,
+            serverTimezone: Intl.DateTimeFormat().resolvedOptions().timeZone
         });
 
         if(combineDateTime < bufferTime){

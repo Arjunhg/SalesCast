@@ -114,6 +114,14 @@ const WebinarUpcomingState = ({ webinar, currentUser }: Props) => {
           {webinar?.title}
         </h3>
         <p className="text-muted-foreground text-xs">{webinar.description}</p>
+        
+        {/* Debug information */}
+        <div className="text-xs text-gray-500 space-y-1">
+          <p>Raw startTime: {webinar.startTime.toString()}</p>
+          <p>ISO String: {new Date(webinar.startTime).toISOString()}</p>
+          <p>Local String: {new Date(webinar.startTime).toString()}</p>
+        </div>
+        
         <div className="w-full justify-center flex gap-2 flex-wrap items-center">
           <Button
             variant={'outline'}
