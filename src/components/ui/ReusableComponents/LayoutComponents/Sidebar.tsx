@@ -7,11 +7,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/comp
 import Link from "next/link";
 import { UserButton } from "@clerk/nextjs";
 
-type Props = {
-
-}
-
-const Sidebar = (props: Props) => {
+const Sidebar = () => {
 
     const pathname = usePathname();
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import { CalendarX, ArrowLeft } from 'lucide-react';
+import Link from 'next/link';
 
 const CannotBookCallError = () => {
   return (
@@ -14,13 +15,13 @@ const CannotBookCallError = () => {
             You are not eligible to book a call for this webinar. Please check the requirements or contact support for more information.
           </p>
         </div>
-        <a 
+        <Link
           href="/live-webinar" 
           className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-gradient-to-r from-purple-500/20 to-blue-500/20 border border-white/20 text-gray-900 dark:text-white font-semibold hover:scale-105 transition-all duration-300"
         >
           <ArrowLeft className="w-4 h-4" />
           Go back to webinars
-        </a>
+        </Link>
       </div>
     </div>
   );

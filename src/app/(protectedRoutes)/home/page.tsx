@@ -6,9 +6,7 @@ import Image from "next/image";
 import { potentialCustomer } from "@/lib/data";
 import UserInfoCard from "@/components/ui/ReusableComponents/UserInfoCard";
 
-type Props = {}
-
-const HomePage = (props: Props) => {
+const HomePage = () => {
     return (
         <div className="w-full mx-auto h-full space-y-12">
             {/* Hero Section */}

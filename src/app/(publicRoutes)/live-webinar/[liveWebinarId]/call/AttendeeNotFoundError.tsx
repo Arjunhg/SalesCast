@@ -1,5 +1,6 @@
 import React from 'react';
 import { UserX, ArrowLeft } from 'lucide-react';
+import Link from 'next/link';
 
 const AttendeeNotFoundError = () => {
   return (
@@ -11,16 +12,16 @@ const AttendeeNotFoundError = () => {
         <div className="space-y-3">
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Attendee Not Found</h2>
           <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-            We couldn't find your attendee information for this webinar call. Please check your registration or contact support.
+            We couldn&apos;t find your attendee information for this webinar call. Please check your registration or contact support.
           </p>
         </div>
-        <a 
+        <Link
           href="/live-webinar" 
           className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-gradient-to-r from-purple-500/20 to-blue-500/20 border border-white/20 text-gray-900 dark:text-white font-semibold hover:scale-105 transition-all duration-300"
         >
           <ArrowLeft className="w-4 h-4" />
           Go back to webinars
-        </a>
+        </Link>
       </div>
     </div>
   );

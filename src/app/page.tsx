@@ -1,4 +1,3 @@
-import { Waitlist } from "@clerk/nextjs";
 import Link from "next/link";
 import { Sparkles, ArrowRight, Play, Users, TrendingUp } from "lucide-react";
 
@@ -87,7 +86,7 @@ export default function Home() {
               Everything you need to succeed
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              From live streaming to analytics, we've got you covered with powerful tools designed for modern webinar creators.
+              From live streaming to analytics, we&apos;ve got you covered with powerful tools designed for modern webinar creators.
             </p>
           </div>
 

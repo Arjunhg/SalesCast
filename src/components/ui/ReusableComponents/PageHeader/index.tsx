@@ -1,6 +1,5 @@
-import { Search } from "lucide-react"
+
 import PurpleIcon from "../PurpleIcon"
-import { Input } from "../../input"
 
 type Props = {
     heading?: string
@@ -12,7 +11,7 @@ type Props = {
     
 }
 
-const PageHeader = ({ heading, mainIcon, leftIcon, rightIcon, children, placeholder}: Props) => {
+const PageHeader = ({ heading, mainIcon, leftIcon, rightIcon}: Props) => {
     return (
         <div className="w-full flex flex-col gap-8">
             <div className="w-full flex justify-center sm:justify-between items-center gap-8 flex-wrap">

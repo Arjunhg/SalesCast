@@ -4,7 +4,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 // import { User } from "@prisma/client";
 import { User } from "@prisma/client"
-import { ArrowLeft, Zap, Sparkles } from "lucide-react";
+import { ArrowLeft, Sparkles } from "lucide-react";
 import CreateWebinarButton from "../CreateWebinarButton";
 import { Assistant } from "@vapi-ai/server-sdk/api";
 
@@ -13,7 +13,7 @@ type Props = {
     assistants: Assistant[] | []
 }
 
-const Header = ( {user, assistants}: Props ) => {
+const Header = ( {assistants}: Props ) => {
     const pathname = usePathname();
     const router = useRouter();
 

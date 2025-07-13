@@ -32,11 +32,11 @@ export const vapiServer = {
       const client = getVapiServer()
       return client.assistants.list()
     },
-    create: async (data: any) => {
+    create: async (data: Record<string, unknown>) => {
       const client = getVapiServer()
       return client.assistants.create(data)
     },
-    update: async (id: string, data: any) => {
+    update: async (id: string, data: Record<string, unknown>) => {
       const client = getVapiServer()
       return client.assistants.update(id, data)
     },

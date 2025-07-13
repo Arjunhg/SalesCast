@@ -14,13 +14,12 @@ import { CalendarIcon, Clock, Upload } from 'lucide-react'
 import { format } from 'date-fns'
 import { toast } from 'sonner'
 
-type Props = {}
 
-const BasicInfoForm = (props: Props) => {
+const BasicInfoForm = () => {
 
     const{formData, updateBasicInfoField, getStepValidationErrors}=useWebinarStore();
 
-    const {webinarName, description, date, time, timeFormat} = formData.basicInfo;
+    const {webinarName, description, date} = formData.basicInfo;
 
     const errors = getStepValidationErrors('basicInfo');
 

@@ -1,6 +1,6 @@
 // import LeadIcon from '@/icons/LeadIcon'
 import { CallStatusEnum } from '@prisma/client'
-import { Sparkle, Webcam, Home as HomeIcon, Settings as SettingsIcon, Users as LeadIcon} from 'lucide-react'
+import { Sparkle, Webcam, Home as HomeIcon, Users as LeadIcon} from 'lucide-react'
 export const sidebarData = [
   {
     id: 1,

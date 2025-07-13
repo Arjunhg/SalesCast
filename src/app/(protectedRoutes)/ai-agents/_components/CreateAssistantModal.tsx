@@ -11,7 +11,6 @@ import {
   DialogHeader,
   DialogFooter,
   DialogTitle,
-  DialogClose,
   DialogDescription,
 } from '@/components/ui/dialog'
 
@@ -38,9 +37,12 @@ const CreateAssistantModal = ({ open, onOpenChange }: CreateAssistantModalProps)
       setName('')
       onOpenChange(false)
       toast.success('Assistant created successfully')
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Error creating assistant:', error)
-      const errorMessage = error.message || 'Failed to create assistant'
+      let errorMessage = 'Failed to create assistant'
+      if (typeof error === 'object' && error !== null && 'message' in error) {
+        errorMessage = (error as { message?: string }).message || errorMessage
+      }
       toast.error(errorMessage)
     } finally {
       setLoading(false)

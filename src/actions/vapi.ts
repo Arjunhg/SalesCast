@@ -11,15 +11,18 @@ export const getAllAssistants = async () => {
       status: 200,
       data: getAllAgents,
     }
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error fetching agents:', error)
     
     // Handle specific VAPI errors
-    if (error.statusCode === 401) {
-      return {
-        success: false,
-        status: 401,
-        message: 'Authentication failed. Please check your VAPI credentials.',
+    if (typeof error === 'object' && error !== null && 'statusCode' in error) {
+      const err = error as { statusCode?: number; message?: string }
+      if (err.statusCode === 401) {
+        return {
+          success: false,
+          status: 401,
+          message: 'Authentication failed. Please check your VAPI credentials.',
+        }
       }
     }
     
@@ -59,23 +62,25 @@ export const createAssistant = async (name: string) => {
       status: 200,
       data: createAssistant,
     }
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error creating assistant:', error)
     
     // Handle specific VAPI errors
-    if (error.statusCode === 401) {
-      return {
-        success: false,
-        status: 401,
-        message: 'Authentication failed. Please check your VAPI credentials.',
+    if (typeof error === 'object' && error !== null && 'statusCode' in error) {
+      const err = error as { statusCode?: number; message?: string }
+      if (err.statusCode === 401) {
+        return {
+          success: false,
+          status: 401,
+          message: 'Authentication failed. Please check your VAPI credentials.',
+        }
       }
-    }
-    
-    if (error.statusCode === 400) {
-      return {
-        success: false,
-        status: 400,
-        message: 'Invalid request. Please check your assistant configuration.',
+      if (err.statusCode === 400) {
+        return {
+          success: false,
+          status: 400,
+          message: 'Invalid request. Please check your assistant configuration.',
+        }
       }
     }
     
@@ -114,23 +119,25 @@ export const updateAssistant = async (
       status: 200,
       data: updateAssistant,
     }
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error updating assistant:', error)
     
     // Handle specific VAPI errors
-    if (error.statusCode === 401) {
-      return {
-        success: false,
-        status: 401,
-        message: 'Authentication failed. Please check your VAPI credentials.',
+    if (typeof error === 'object' && error !== null && 'statusCode' in error) {
+      const err = error as { statusCode?: number; message?: string }
+      if (err.statusCode === 401) {
+        return {
+          success: false,
+          status: 401,
+          message: 'Authentication failed. Please check your VAPI credentials.',
+        }
       }
-    }
-    
-    if (error.statusCode === 404) {
-      return {
-        success: false,
-        status: 404,
-        message: 'Assistant not found.',
+      if (err.statusCode === 404) {
+        return {
+          success: false,
+          status: 404,
+          message: 'Assistant not found.',
+        }
       }
     }
     
