@@ -29,15 +29,22 @@ const BasicInfoForm = () => {
     }
 
     const handleDateChange = (newDate: Date | undefined) => {
-        // updateBasicInfoField('date', newDate);
-        updateBasicInfoField('date', newDate ? newDate.toISOString() : undefined);
-        if(newDate){
+        // Store date in YYYY-MM-DD format to avoid timezone issues
+        if (newDate) {
+            const year = newDate.getFullYear();
+            const month = String(newDate.getMonth() + 1).padStart(2, '0');
+            const day = String(newDate.getDate()).padStart(2, '0');
+            const dateString = `${year}-${month}-${day}`;
+            updateBasicInfoField('date', dateString);
+            
             const today = new Date();
             today.setHours(0, 0, 0, 0);
-            if(newDate<today){
+            if(newDate < today){
                 toast.error('Selected date is in the past. Please select a future date.');
                 console.log('Selected date is in the past. Please select a future date.');
             }
+        } else {
+            updateBasicInfoField('date', undefined);
         }
     }
 
@@ -111,20 +118,21 @@ const BasicInfoForm = () => {
                             >
                                 <CalendarIcon className='mr-2 h-4 w-4'/>
                                 {
-                                    date ? format(date, 'PPP') : 'Select a date'
+                                    date ? format(new Date(date), 'PPP') : 'Select a date'
                                 }
                             </Button>
                         </PopoverTrigger>
                         <PopoverContent className="w-auto o-0 !bg-background/50 border border-input">
                             <Calendar
                                 mode="single"
-                                selected={date ? new Date(date) : undefined}
+                                selected={date ? new Date(date + 'T00:00:00') : undefined}
                                 onSelect={handleDateChange}
                                 initialFocus
                                 className="bg-background"
                                 disabled={(date) => {
                                     const today = new Date()
                                     today.setHours(0, 0, 0, 0)
+                                    // Allow today's date for immediate scheduling
                                     return date < today
                                 }}
                             />

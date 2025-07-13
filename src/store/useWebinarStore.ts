@@ -6,7 +6,7 @@ export type WebinarFormState = {
     basicInfo:{
         webinarName?: string
         description?: string
-        date?: string
+        date?: string // Format: YYYY-MM-DD (e.g., "2024-01-15")
         time?: string
         timeFormat?: 'AM' | 'PM'
     }
