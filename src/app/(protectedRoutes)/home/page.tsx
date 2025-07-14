@@ -1,5 +1,4 @@
 import { Upload, Webcam, TrendingUp, Users, Sparkles } from "lucide-react";
-import OnBoarding from "./_components/OnBoarding";
 import FeatureCard from "./_components/FeatureCard";
 import FeatureSectionLayout from "./_components/FeatureSectionLayout";
 import Image from "next/image";
@@ -24,7 +23,6 @@ const HomePage = () => {
                             Leverage AI-powered voice agents and real-time intelligence to transform customer engagement and maximize conversion rates.
                         </p>
                     </div>
-                    <OnBoarding/>
                 </div>
 
                 <div className="grid grid-cols-1 gap-6 place-content-center w-full lg:w-auto">
