@@ -112,7 +112,7 @@ export default function Home() {
                 <Users className="w-8 h-8 text-green-600 dark:text-green-400" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Hyper-Personalization</h3>
-              <p className="text-gray-600 dark:text-gray-400">Dynamic content and offers that adapt to each customer's unique journey and preferences.</p>
+              <p className="text-gray-600 dark:text-gray-400">Dynamic content and offers that adapt to each customer&apos;s unique journey and preferences.</p>
             </div>
           </div>
         </div>
