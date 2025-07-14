@@ -6,7 +6,6 @@ import MultipStepForm from './MultipStepForm';
 import { useState } from 'react';
 import BasicInfoForm from './BasicInfoForm';
 import CTAStep from './CTAStep';
-import AdditionalInfoStep from './AdditionalInfoStep';
 import SuccessStep from './SuccessStep';
 import { Assistant } from '@vapi-ai/server-sdk/api';
 
@@ -37,13 +36,7 @@ const CreateWebinarButton = ({assistants}: Props) => {
           assistants={assistants}
         />
       ),
-    },
-    {
-      id: 'additionalInfo',
-      title: 'Additional information',
-      description: 'Please fill out information about additional options if necessary',
-      component: <AdditionalInfoStep/>,
-    },
+    }
   ]
 
   const handleCreateNew = () => {
