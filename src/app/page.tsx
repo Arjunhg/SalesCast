@@ -26,18 +26,18 @@ export default function Home() {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-purple-500/20 to-blue-500/20 border border-white/20 backdrop-blur-sm">
             <Sparkles className="w-5 h-5 text-purple-600 dark:text-purple-400" />
-            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Next-Generation Webinar Platform</span>
+            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">AI-Powered Retail Experience Platform</span>
           </div>
 
           {/* Main Heading */}
           <h1 className="text-5xl lg:text-7xl font-bold bg-gradient-to-r from-gray-900 via-purple-800 to-blue-800 dark:from-white dark:via-purple-200 dark:to-blue-200 bg-clip-text text-transparent leading-tight">
-            Transform Your Webinars Into
-            <span className="block">Conversion Machines</span>
+            Transform Every Customer
+            <span className="block">Into a Conversion</span>
           </h1>
 
           {/* Description */}
           <p className="text-xl lg:text-2xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
-            Create, host, and analyze webinars that convert. Our platform combines powerful analytics with seamless streaming to maximize your audience engagement.
+            Revolutionize customer engagement with AI-powered voice agents, real-time personalization, and intelligent conversion tracking that turns every interaction into a sales opportunity.
           </p>
 
           {/* CTA Buttons */}
@@ -83,10 +83,10 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center space-y-4 mb-16">
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white">
-              Everything you need to succeed
+              AI-Powered Customer Experience
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              From live streaming to analytics, we&apos;ve got you covered with powerful tools designed for modern webinar creators.
+              From voice AI agents to real-time personalization, we deliver the future of customer engagement with cutting-edge technology.
             </p>
           </div>
 
@@ -95,24 +95,24 @@ export default function Home() {
               <div className="p-4 rounded-2xl bg-purple-500/20 w-fit mb-6">
                 <Play className="w-8 h-8 text-purple-600 dark:text-purple-400" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Live Streaming</h3>
-              <p className="text-gray-600 dark:text-gray-400">Crystal clear HD streaming with real-time engagement tools.</p>
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Voice AI Agents</h3>
+              <p className="text-gray-600 dark:text-gray-400">Intelligent voice conversations that qualify leads and drive conversions in real-time.</p>
             </div>
 
             <div className="p-8 rounded-3xl bg-white/10 backdrop-blur-sm border border-white/20 hover:scale-105 transition-all duration-300">
               <div className="p-4 rounded-2xl bg-blue-500/20 w-fit mb-6">
                 <TrendingUp className="w-8 h-8 text-blue-600 dark:text-blue-400" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Analytics</h3>
-              <p className="text-gray-600 dark:text-gray-400">Deep insights into audience behavior and conversion metrics.</p>
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Real-Time Intelligence</h3>
+              <p className="text-gray-600 dark:text-gray-400">AI-powered analytics that predict customer behavior and optimize conversion paths.</p>
             </div>
 
             <div className="p-8 rounded-3xl bg-white/10 backdrop-blur-sm border border-white/20 hover:scale-105 transition-all duration-300">
               <div className="p-4 rounded-2xl bg-green-500/20 w-fit mb-6">
                 <Users className="w-8 h-8 text-green-600 dark:text-green-400" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Engagement</h3>
-              <p className="text-gray-600 dark:text-gray-400">Interactive features to keep your audience engaged and converting.</p>
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Hyper-Personalization</h3>
+              <p className="text-gray-600 dark:text-gray-400">Dynamic content and offers that adapt to each customer's unique journey and preferences.</p>
             </div>
           </div>
         </div>
